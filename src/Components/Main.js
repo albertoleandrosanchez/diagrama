@@ -12,8 +12,8 @@ const MainDiagram = styled.div`
     padding-top:4em;
   //  background-color: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   background-image: transparent;
-  `
-  
+`
+
   function Main() {
  
     return <MainDiagram>

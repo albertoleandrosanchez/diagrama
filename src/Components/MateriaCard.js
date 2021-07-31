@@ -41,14 +41,13 @@ function MateriaCard({itemConfig}) {
     const isCompleted = (materiaId) => {
         return materiasCompletas.includes(materiaId)
     }
-    
 
     return (
         <Card style={{ width: '100%', height: '100%' , borderColor: `${itemConfig.itemTitleColor}`}} >
             {isCompleted(itemConfig.id) ? 
             <div>
                 <img src={CompletedImg} style={imgStyle}/>
-            </div>:''
+            </div>:null
             }
             <Card.Header className='fw-lighter text-wrap'>{truncate(`${itemConfig.cuatrimestre} Cuatrimestre`, 18)}</Card.Header>
             <Card.Body style={{ heigth: '100%', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems:'center' }} >
