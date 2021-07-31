@@ -1,13 +1,22 @@
+import { useState } from 'react';
 import './App.css';
 import  Main  from './Components/Main';
+import Nav   from './Components/Nav';
+import MateriaProvider from './context/MateriasProvider'
 
 function App() {
-  return (
-    <div className="App">
-      <Main>
 
-      </Main>
-    </div>
+  const [materiasCompletas, setMateriasCompletas] = useState([]);
+
+  return (
+    <MateriaProvider>
+
+      <div className="App">
+        <Nav/>
+        <Main/>
+      </div>
+    
+    </MateriaProvider>
   );
 }
 

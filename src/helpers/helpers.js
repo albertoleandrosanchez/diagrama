@@ -65,4 +65,8 @@ export const difficulty = {
 
 }
 
+export const truncate = (input, limit) => input.length > limit ? `${input.substring(0, limit)}...` : input;
+
+//export const 
+
 

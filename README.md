@@ -9,6 +9,7 @@ Este es un diagrama de las materias de la 'Tecnicatura universitaria en informat
 - Bootstrap-React
 - Bootstrap-CDN
 - Bootstrap-Icons
+- react-circular-progressbar
 
 ## Puedo tener una copia del proyecto?
 

@@ -16,11 +16,11 @@ const materias = [
     itemTitleColor: area.MC.color, 
     studyGroup: area.MC.name,
     studyArea: area.MC.acronim,
-    matrixId:'1',
     image: difficulty.easy,
     url:null,
     cuatrimestre:'Sexto',
-    templateName: "materiaTemplate"
+    templateName: "materiaTemplate",
+    
 
   },
   {   
@@ -35,7 +35,6 @@ const materias = [
     itemTitleColor: area.Gral.color,
     studyGroup: area.Gral.name,
     studyArea: area.Gral.acronim,
-    matrixId:'1',
     image: difficulty.easy,
     url:null,
     cuatrimestre:'Sexto',
@@ -54,7 +53,6 @@ const materias = [
     itemTitleColor: area.PPS.color,
     studyGroup: area.PPS.name,
     studyArea: area.PPS.acronim,
-    matrixId:'1',
     image: difficulty.easy,
     url:null,
     cuatrimestre:'Sexto',
@@ -72,11 +70,11 @@ const materias = [
     itemTitleColor: area.ISBDySI.color,
     studyGroup: area.ISBDySI.name,
     studyArea: area.ISBDySI.acronim,
-    matrixId:'2',
     image: difficulty.easy,
     url:'https://informaticaunahur.github.io/Des-App/',
     cuatrimestre:'Quinto',
     templateName: "materiaTemplate",
+    isVisible: true,
   },
   {   
     id: 19,
@@ -89,7 +87,6 @@ const materias = [
     itemTitleColor: area.ASOyR.color,
     studyGroup: area.ASOyR.name,
     studyArea:area.ASOyR.acronim,
-    matrixId:'2',
     image: difficulty.easy,
     url:'https://informaticaunahur.github.io/Labo/',
     cuatrimestre:'Quinto',
@@ -106,7 +103,6 @@ const materias = [
     itemTitleColor: area.AyL.color,
     studyGroup:area.AyL.name,
     studyArea: area.AyL.acronim,
-    matrixId:'2',
     image: difficulty.easy,
     url:'https://informaticaunahur.github.io/Funcional/',
     cuatrimestre:'Quinto',
@@ -123,7 +119,6 @@ const materias = [
     itemTitleColor: area.Gral.color,
     studyGroup: area.Gral.name,
     studyArea: area.Gral.acronim,
-    matrixId:'3',
     image: difficulty.easy,
     url:null,
     cuatrimestre:'Cuarto',
@@ -140,7 +135,6 @@ const materias = [
     itemTitleColor: area.ISBDySI.color,
     studyGroup: area.ISBDySI.name,
     studyArea: area.ISBDySI.acronim,
-    matrixId:'3',
     image: difficulty.easy,
     url:'https://informaticaunahur.github.io/Elementos/',
     cuatrimestre:'Cuarto',
@@ -157,7 +151,6 @@ const materias = [
     itemTitleColor: area.ISBDySI.color,
     studyGroup: area.ISBDySI.name,
     studyArea: area.ISBDySI.acronim,
-    matrixId:'3',
     image: difficulty.easy,
     url:'https://informaticaunahur.github.io/Persistencia/',
     cuatrimestre:'Cuarto',
@@ -174,7 +167,6 @@ const materias = [
     itemTitleColor: area.AyL.color,
     studyGroup: area.AyL.name,
     studyArea: area.AyL.acronim,
-    matrixId:'3',
     image: difficulty.easy,
     url:null,
     cuatrimestre:'Cuarto',
@@ -191,7 +183,6 @@ const materias = [
     itemTitleColor: area.ISBDySI.color,
     studyGroup: area.ISBDySI.name,
     studyArea: area.ISBDySI.acronim,
-    matrixId:'3',
     image: difficulty.easy,
     url:'https://informaticaunahur.github.io/Interfaces/',
     cuatrimestre:'Cuarto',
@@ -405,8 +396,12 @@ export const config = {
     linesColor: '#000000',
     hasSelectorCheckbox: Enabled.False,
     scale: 0.8, // de aca se puede hacer "zoom"
-    normalLevelShift: 40,
-    normalItemsInterval: 30,
+    normalLevelShift: 20,
+    dotLevelShift: 40,
+    lineLevelShift: 30,
+    normalItemsInterval: 40,
+    dotItemsInterval: 0,
+    lineItemsInterval: 40,
     
 
 
@@ -414,7 +409,7 @@ export const config = {
 
     templates: [{
       name: "materiaTemplate",
-      itemSize: { width: 170, height: 200 },
+      itemSize: { width: 200, height: 270 },
       onItemRender: ({ context: itemConfigu }) => 
           <MateriaCard itemConfig={itemConfigu}/>
       
