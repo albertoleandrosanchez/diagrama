@@ -58,10 +58,10 @@ function MateriaCard({itemConfig}) {
             </Card.Body>
             <Card.Body className='ratingsContainer d-flex flex-row justify-content-center align-items-center p-1'>
              
-                <CircularProgressbarWithChildren  value={66}  > <i class="bi bi-heart-fill text-danger"></i> </CircularProgressbarWithChildren>
+                {/* <CircularProgressbarWithChildren  value={66}  > <i class="bi bi-heart-fill text-danger"></i> </CircularProgressbarWithChildren>
                  <CircularProgressbarWithChildren  value={66} ><i class="bi bi-hourglass-split text-success"></i></CircularProgressbarWithChildren>
                 <CircularProgressbarWithChildren  value={66} ><i class="bi bi-book-half text-info"></i></CircularProgressbarWithChildren> 
-                
+                 */}
                 </Card.Body>
                 <Button 
                 variant='success'
