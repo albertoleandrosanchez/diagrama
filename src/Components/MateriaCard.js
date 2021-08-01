@@ -14,6 +14,7 @@ function MateriaCard({itemConfig}) {
     const imgStyle = {
         width: '100%',
         position: 'absolute',
+        opacity: '0.5',
         top: '0',
         left: '0',
         zIndex: '1' 
@@ -36,21 +37,24 @@ function MateriaCard({itemConfig}) {
         }
     }
     const esAptoParaCursar = () => itemConfig.children.every(child => (isCompleted(child))) && !materiasCompletas.includes(itemConfig.id);
-    
+    const backgroundEsAptoParaCursar = () =>{
+        if(materiasCompletas.includes(itemConfig.id)){
+            return '#5f5f5f8f'
+        }
+
+        if(esAptoParaCursar()){
+            return '#95ff751c'
+        }else{
+            return '#ff747449'
+        }
+    };
     
     const isCompleted = (materiaId) => {
         return materiasCompletas.includes(materiaId)
     }
 
     return (
-        <Card style={{ width: '100%', height: '100%' , borderColor: `${itemConfig.itemTitleColor}`,
-          
-        backgroundColor: 
-            `${
-                //isCompleted(itemconfig.id)? 
-                esAptoParaCursar()?'#95ff751c':'#ff747449'}`
-          
-            }} >
+        <Card style={{ width: '100%', height: '100%' , borderColor: `${itemConfig.itemTitleColor}`,backgroundColor:`${backgroundEsAptoParaCursar()}`}}>
             {isCompleted(itemConfig.id) ? 
             <div>
                 <img src={CompletedImg} style={imgStyle}/>
