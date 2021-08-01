@@ -3,7 +3,7 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/c
 import React,{useContext, useState} from 'react'
 import {MateriaContext} from '../context/MateriasProvider'
 import styled from 'styled-components'
-import {area, listArea,listaMateriasDelArea, hoursLeftOf_} from '../helpers/helpers'
+import {area, listArea,listaMateriasDelArea, hoursLeftOf_,aptoStyle,noAptoStyle} from '../helpers/helpers'
 import Divider from '@material-ui/core/Divider';
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import { materias } from '../helpers/config'
@@ -27,16 +27,18 @@ const StatGeneral = styled.div`
     width: 100%;
     `
 
+
+
+
 function Stats() {
 
 
     const [materiasCompletas, setMateriasCompletas] = useContext(MateriaContext);
     const [datosTabla, setDatosTabla] = useState({})
-    
-    const hoursLeftOf_ = (IDarea) => {
-        return listaMateriasFaltantesDelArea_(IDarea).reduce(
-            (acc, materia) => acc + materia.totalHours, 0);
-    }
+   
+
+  
+   
     const hoursDoneOf_ = (IDarea,tHoursArea) => {
         return listaMateriasFaltantesDelArea_(IDarea).reduce(
             (tHoursArea, materia) => tHoursArea - materia.totalHours, tHoursArea);
@@ -49,7 +51,13 @@ function Stats() {
 
     const listaMateriaHechasDeLaCarrera = materias.filter(materia => materiasCompletas.includes(materia.id))
     const listaMateriaFaltantesDeLaCarrera = materias.filter(materia => !materiasCompletas.includes(materia.id))
-
+    const materiasFaltantesId = listaMateriaFaltantesDeLaCarrera.map(materia => materia.id)
+    
+    const esAptoParaCursar = (materia) => 
+         
+         materia.children.every(child => (materiasCompletas.includes(child)))
+         
+    
     return (
         <StatContainer>
         <div style={{ width: 200, height: 200, }}>
@@ -76,7 +84,7 @@ function Stats() {
                 <TableBody>
                     {listaMateriaFaltantesDeLaCarrera.map(materia => {
                         return (
-                            <TableRow key={materia.id}>
+                            <TableRow style={ esAptoParaCursar(materia)? aptoStyle:noAptoStyle } key={materia.id}>
                                 <TableCell>{materia.title}</TableCell>
                                 <TableCell>{materia.totalHours}</TableCell>
                                 <TableCell>{materia.cuatrimestre}</TableCell>
@@ -95,8 +103,6 @@ function Stats() {
                 Materias Completas
             </p>
             <Table size='small' className='border border-danger'>
-            
-
                 <TableHead>
                     <TableRow>
                         <TableCell>Nombre</TableCell>
@@ -107,8 +113,8 @@ function Stats() {
                 <TableBody>
                     {listaMateriaHechasDeLaCarrera.map(materia => {
                         return (
-                            <TableRow key={materia.id}>
-                                <TableCell>{materia.title}</TableCell>
+                            <TableRow  key={materia.id}>
+                                <TableCell> {materia.title}</TableCell>
                                 <TableCell>{materia.totalHours}</TableCell>
                                 <TableCell>{materia.cuatrimestre}</TableCell>
                             </TableRow>

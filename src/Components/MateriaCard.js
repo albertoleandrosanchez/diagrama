@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Rating } from '@material-ui/lab';
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import {truncate} from '../helpers/helpers'
+import {truncate, aptoStyle,noAptoStyle} from '../helpers/helpers'
 import CompletedImg from '../assets/completed.png'
 import { useContext } from 'react';
 import { MateriaContext } from '../context/MateriasProvider';
@@ -37,13 +37,22 @@ function MateriaCard({itemConfig}) {
             setMateriasCompletas(materiasCompletas.filter(id => id !== materiaId))
         }
     }
+    const esAptoParaCursar = () => itemConfig.children.every(child => (isCompleted(child))) && !materiasCompletas.includes(itemConfig.id);
+    
     
     const isCompleted = (materiaId) => {
         return materiasCompletas.includes(materiaId)
     }
 
     return (
-        <Card style={{ width: '100%', height: '100%' , borderColor: `${itemConfig.itemTitleColor}`}} >
+        <Card style={{ width: '100%', height: '100%' , borderColor: `${itemConfig.itemTitleColor}`,
+          
+        backgroundColor: 
+            `${
+                //isCompleted(itemconfig.id)? 
+                esAptoParaCursar()?'#95ff751c':'#ff747449'}`
+          
+            }} >
             {isCompleted(itemConfig.id) ? 
             <div>
                 <img src={CompletedImg} style={imgStyle}/>
@@ -55,7 +64,7 @@ function MateriaCard({itemConfig}) {
                 
                 
             </Card.Body>
-            <Card.Body className='ratingsContainer d-flex flex-row justify-content-center align-items-center p-1'>
+            <Card.Body className='ratingsContainer d-flex flex-row justify-content-center align-items-center p-1' >
              
                 {/* <CircularProgressbarWithChildren  value={66}  > <i class="bi bi-heart-fill text-danger"></i> </CircularProgressbarWithChildren>
                  <CircularProgressbarWithChildren  value={66} ><i class="bi bi-hourglass-split text-success"></i></CircularProgressbarWithChildren>

@@ -91,3 +91,10 @@ export const colorCompletitionPercentageof_area = (areaID) => {
     
 }
 
+export const aptoStyle = {
+    backgroundColor: '#09ff002d',
+}
+export const noAptoStyle = {
+    backgroundColor: '#2300e91d',
+}
+
