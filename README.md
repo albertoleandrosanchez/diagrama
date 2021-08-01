@@ -1,3 +1,5 @@
+Pagina Demo(https://diagrama-tecnicatura.netlify.app/)
+
 # Diagrama de materias de la tecnicatura en informatica
 
 Este es un diagrama de las materias de la 'Tecnicatura universitaria en informatica' de la UNAHUR hecho principalmente con la libreria de BasicPrimitives.
