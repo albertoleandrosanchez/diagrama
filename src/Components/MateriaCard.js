@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import { Button,Card } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Rating } from '@material-ui/lab';
-import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import {truncate, aptoStyle,noAptoStyle} from '../helpers/helpers'
 import CompletedImg from '../assets/completed.png'
@@ -58,9 +56,9 @@ function MateriaCard({itemConfig}) {
                 <img src={CompletedImg} style={imgStyle}/>
             </div>:null
             }
-            <Card.Header className='fw-lighter text-wrap'>{truncate(`${itemConfig.cuatrimestre} Cuatrimestre`, 18)}</Card.Header>
+            <Card.Header className='fw-lighter text-wrap'>{truncate(`${itemConfig.cuatrimestre} Cuatrimestre`, 25)}</Card.Header>
             <Card.Body style={{ heigth: '100%', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems:'center' }} >
-                <Card.Title style={{ height:'2em',textOverflow:'ellipsis'}} className='fw-bold '>{truncate(itemConfig.title,20)}</Card.Title>
+                <Card.Title style={{ height:'2em',textOverflow:'ellipsis'}} className='fw-bold '>{truncate(itemConfig.title,30)}</Card.Title>
                 
                 
             </Card.Body>
