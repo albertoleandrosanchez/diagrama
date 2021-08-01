@@ -26,6 +26,12 @@ const StatGeneral = styled.div`
     padding: 1em;
     width: 100%;
     `
+const StatProggressCircles = styled.div`
+    display: flex;
+    justify-content:space-between; 
+    padding: 1em;
+    width: 100%;
+    `
 
 
 
@@ -34,7 +40,6 @@ function Stats() {
 
 
     const [materiasCompletas, setMateriasCompletas] = useContext(MateriaContext);
-    const [datosTabla, setDatosTabla] = useState({})
    
 
   
@@ -42,16 +47,15 @@ function Stats() {
     const hoursDoneOf_ = (IDarea,tHoursArea) => {
         return listaMateriasFaltantesDelArea_(IDarea).reduce(
             (tHoursArea, materia) => tHoursArea - materia.totalHours, tHoursArea);
-        //    (acc, materia) => acc + materia.totalHours, 0);
     }
     
 
     const listaMateriasFaltantesDelArea_ = (IDarea) => listaMateriasDelArea(IDarea).filter( materia => !materiasCompletas.includes(materia.id))
     const listaMateriasHechasDelArea_ = (IDarea) => listaMateriasDelArea(IDarea).filter( materia => materiasCompletas.includes(materia.id))
-
     const listaMateriaHechasDeLaCarrera = materias.filter(materia => materiasCompletas.includes(materia.id))
     const listaMateriaFaltantesDeLaCarrera = materias.filter(materia => !materiasCompletas.includes(materia.id))
-    const materiasFaltantesId = listaMateriaFaltantesDeLaCarrera.map(materia => materia.id)
+    const totalHoursDone = () =>listaMateriaHechasDeLaCarrera.reduce((hoursAcc, materia) => materia.totalHours + hoursAcc, 0)
+    const totalHoursOfTheCarrer =() => materias.reduce((hoursAcc, materia) => materia.totalHours + hoursAcc, 0)
     
     const esAptoParaCursar = (materia) => 
          
@@ -60,15 +64,28 @@ function Stats() {
     
     return (
         <StatContainer>
-        <div style={{ width: 200, height: 200, }}>
-            <CircularProgressbarWithChildren 
-            value={listaMateriaHechasDeLaCarrera.length /materias.length*100} 
-                style={{ height: '1em'}}>
-                <span style={{fontSize:'1em', fontWeight:'700' }}>Materias Hechas</span>
-                {`${listaMateriaHechasDeLaCarrera.length} / ${materias.length}`}
-                <small className='fw-light text-muted'>{Math.round(listaMateriaHechasDeLaCarrera.length /materias.length*100)}% </small>
-            </CircularProgressbarWithChildren>
-        </div>
+            <StatProggressCircles>
+                <div style={{ width: 200, height: 200, }}>
+                    <CircularProgressbarWithChildren 
+                    value={listaMateriaHechasDeLaCarrera.length /materias.length*100} 
+                        style={{ height: '1em'}}>
+                        <span style={{fontSize:'1em', fontWeight:'700' }}>Materias Hechas</span>
+                        {`${listaMateriaHechasDeLaCarrera.length} / ${materias.length}`}
+                        <small className='fw-light text-muted'>{Math.round(listaMateriaHechasDeLaCarrera.length /materias.length*100)}% </small>
+                    </CircularProgressbarWithChildren>
+                </div>
+
+                
+                <div style={{ width: 200, height: 200, }}>
+                    <CircularProgressbarWithChildren 
+                    value={totalHoursDone() /totalHoursOfTheCarrer()*100} 
+                        style={{ height: '1em'}}>
+                        <span style={{fontSize:'1em', fontWeight:'700' }}>Horas Hechas</span>
+                        {`${totalHoursDone()} / ${totalHoursOfTheCarrer()}`}
+                        <small className='fw-light text-muted'>{Math.round(totalHoursDone() /totalHoursOfTheCarrer()*100)}% </small>
+                    </CircularProgressbarWithChildren>
+                </div>
+        </StatProggressCircles>
         <StatGeneral >
         <div><p className='fw-bold fs-6 p-1'>
                 Materias Faltantes
