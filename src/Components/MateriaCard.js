@@ -1,13 +1,12 @@
-import React, {useState} from 'react'
+
 import { Button,Card } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-circular-progressbar/dist/styles.css';
-import {truncate, aptoStyle,noAptoStyle} from '../helpers/helpers'
+import {truncate} from '../helpers/helpers'
 import CompletedImg from '../assets/completed.png'
 import { useContext } from 'react';
 import { MateriaContext } from '../context/MateriasProvider';
 import { useEffect } from 'react';
-
 
 function MateriaCard({itemConfig}) {
 
@@ -57,7 +56,7 @@ function MateriaCard({itemConfig}) {
         <Card style={{ width: '100%', height: '100%' , borderColor: `${itemConfig.itemTitleColor}`,backgroundColor:`${backgroundEsAptoParaCursar()}`}}>
             {isCompleted(itemConfig.id) ? 
             <div>
-                <img src={CompletedImg} style={imgStyle}/>
+                <img src={CompletedImg} style={imgStyle} alt='completeImg'/>
             </div>:null
             }
             <Card.Header className='fw-lighter text-wrap'>{truncate(`${itemConfig.cuatrimestre} Cuatrimestre`, 25)}</Card.Header>
@@ -68,10 +67,7 @@ function MateriaCard({itemConfig}) {
             </Card.Body>
             <Card.Body className='ratingsContainer d-flex flex-row justify-content-center align-items-center p-1' >
              
-                {/* <CircularProgressbarWithChildren  value={66}  > <i class="bi bi-heart-fill text-danger"></i> </CircularProgressbarWithChildren>
-                 <CircularProgressbarWithChildren  value={66} ><i class="bi bi-hourglass-split text-success"></i></CircularProgressbarWithChildren>
-                <CircularProgressbarWithChildren  value={66} ><i class="bi bi-book-half text-info"></i></CircularProgressbarWithChildren> 
-                 */}
+                
                 </Card.Body>
                 <Button 
                 variant='success'
@@ -86,7 +82,7 @@ function MateriaCard({itemConfig}) {
                 variant={isCompleted(itemConfig.id)? 'outline-success' : 'outline-danger'} 
                 onClick={()=>toggleMateriaId(itemConfig.id)}
                active={isCompleted(itemConfig.id)}
-               >completada</Button>
+               >{isCompleted(itemConfig.id)? 'Hecha':'Aprobada?'}</Button>
         </Card>
     )   
 }

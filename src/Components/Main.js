@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import {  FamDiagram } from 'basicprimitivesreact';
 import {config} from '../helpers/config';
 import styled from 'styled-components';

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import './App.css';
 import  Main  from './Components/Main';
 import Nav   from './Components/Nav';
@@ -7,8 +7,7 @@ import Stats from './Components/Stats';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 function App() {

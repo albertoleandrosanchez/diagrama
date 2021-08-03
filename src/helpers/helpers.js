@@ -5,6 +5,30 @@ import insaneIMG from '../assets/difficultyImgs/insane.JPG'
 import normalIMG from '../assets/difficultyImgs/normal.JPG'
 import {materias} from './config'
 
+//get actual carrer in localhost if is one or set it
+export const getActualCarrer = () => {
+    if(localStorage.getItem('actualCarrer')){
+        return localStorage.getItem('actualCarrer')
+    }
+    else{
+        localStorage.setItem('actualCarrer','Tecnicatura')
+        return 'Tecnicatura'
+    }
+ }
+
+export  const toggleActualCarrer = () => {
+    if(localStorage.getItem('actualCarrer') == 'Tecnicatura'){
+        localStorage.setItem('actualCarrer', 'Licenciatura' )
+    }
+    else{
+        localStorage.setItem('actualCarrer', 'Tecnicatura')
+    }
+ }
+
+
+
+
+
 
 export const area = {
     PPS:{
@@ -71,7 +95,6 @@ export const difficulty = {
     difficult: difficultIMG,
     hard: hardIMG,
     insane: insaneIMG,
-    difficult: difficultIMG,
 
 }
 

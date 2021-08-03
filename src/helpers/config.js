@@ -1,4 +1,4 @@
-import {area, difficulty} from './helpers'
+import {area, difficulty, getActualCarrer} from './helpers'
 import { GroupByType, PageFitMode, Enabled } from 'basicprimitives';
 import MateriaCard from '../Components/MateriaCard';
 
@@ -418,7 +418,8 @@ export const materias = [
   },
 ]
 
-export const config = {
+export const config = { 
+ 
     items: materias,
     showExtraArrows:false,
     linesWidth: 2,
@@ -442,7 +443,7 @@ export const config = {
           <MateriaCard itemConfig={itemConfigu}/>
       
   }]
+}
 
-  };
 
 

@@ -1,13 +1,13 @@
 
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core'
-import React,{useContext, useState} from 'react'
+import React,{useContext} from 'react'
 import {MateriaContext} from '../context/MateriasProvider'
 import styled from 'styled-components'
-import {area, listArea,listaMateriasDelArea, hoursLeftOf_,aptoStyle,noAptoStyle} from '../helpers/helpers'
+import { listArea,listaMateriasDelArea, aptoStyle,noAptoStyle} from '../helpers/helpers'
 import Divider from '@material-ui/core/Divider';
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import { materias } from '../helpers/config'
-import { useEffect } from 'react'
+
 
 const StatContainer = styled.div`
     display: flex;

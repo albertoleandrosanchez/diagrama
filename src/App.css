@@ -9,11 +9,6 @@ body {
 
 .App {
   text-align: center;
-  background-image: radial-gradient(
-    circle 680px at 0% 100%,
-    rgba(221, 221, 221, 1) 0%,
-    rgba(209, 252, 209, 1) 100.3%
-  );
-
+  background-image: #ffffff;
   height: 100%;
 }
