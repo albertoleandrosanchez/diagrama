@@ -14,7 +14,6 @@ const StatContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    padding-top:4.5em;
     margin:0 3em;
     // background-color: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     background-color: #fdfbfb;

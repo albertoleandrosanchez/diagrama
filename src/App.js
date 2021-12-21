@@ -1,38 +1,57 @@
 
 import './App.css';
-import  Main  from './Components/Main';
-import Nav   from './Components/Nav';
-import MateriaProvider from './context/MateriasProvider'
-import Stats from './Components/Stats';
+import  Main  from './pages/Main';
+import Nav from './Components/Nav';
+import Stats from './pages/Stats';
+import Login from './pages/Login';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  useLocation,
+  Redirect,
+
 } from "react-router-dom";
+import useAuth from './hooks/useAuth';
+import firebase from './api/firebase';
 
 function App() {
 
   return (
-    <MateriaProvider>
-
       <div className="App">
-        
         <Router>
           <Nav/>
           <Switch>
-           
-            <Route path='/diagram'>
-              <Main/>
+            <Route exact path="/login">
+              <Login/>
             </Route>
-            <Route path='/'>
-              <Stats/>
-            </Route>
+            <RequireAuth>
+              <Route exact path='/diagram'>
+                <Main/>
+              </Route>
+              <Route exact path='/'>
+                <Stats/>
+              </Route>
+            </RequireAuth>
           </Switch>
         </Router>
       </div>
-    
-    </MateriaProvider>
   );
+}
+
+function RequireAuth({ children }) {
+  const  {auth} = useAuth();
+  let location = useLocation();
+
+  if (!auth.user) {
+  //   // Redirect them to the /login page, but save the current location they were
+  //   // trying to go to when they were redirected. This allows us to send them
+  //   // along to that page after they login, which is a nicer user experience
+  //   // than dropping them off on the home page.
+    return <Redirect to="/login" state={{ from: location }} />;
+  }
+
+  return children;
 }
 
 export default App;

@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import {getActualCarrer,toggleActualCarrer} from '../helpers/helpers'
 
 const styleNav = {
+    position: 'sticky',
+    top: 0,
     display: 'flex',
-    position:'absolute',
     justifyContent: 'flex-start',
     width: '100%',
     padding: '0.4em',
